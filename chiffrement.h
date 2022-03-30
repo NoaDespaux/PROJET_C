@@ -30,6 +30,6 @@ void convertirAccents(char * texte);
 
 void chiffrer(char * texte, int cle);
 
-void déchiffrer(char * texte, int cle);
+void dechiffrer(char * texte, int cle);
 
 void affichage(char * texte);
