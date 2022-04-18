@@ -24,7 +24,8 @@
 *                                                                             *
 ******************************************************************************/
 
-boolean verifierAlphanumerique(char * texte);
+int verifierAlphanumerique(char c);
+int verifierAlphanumerique2(char c);
 
 void convertirAccents(char * texte);
 
