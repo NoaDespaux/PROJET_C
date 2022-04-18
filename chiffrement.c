@@ -87,6 +87,19 @@ void chiffrer(char * texte, int cle){
 			tabChiffre[i] = cle + tab[i];
 		}
 	}
-	printf("Après : %s\n", tabChiffre);
+	printf("Après chiffrage : %s\n", tabChiffre);
 }
 
+
+// Même chose que pour chiffrer
+void dechiffrer(char * texte, int cle){
+	char tabDechiffre[strlen(texte)];
+	for (int i = 0; i < strlen(texte); i++){
+		if(texte[i] - cle < 97){
+			tabDechiffre[i] = texte[i] - cle + 26;
+		} else {
+			tabDechiffre[i] = texte[i] - cle;
+		}
+	}
+	printf("Après dechiffrage : %s\n", tabDechiffre);
+}
