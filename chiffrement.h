@@ -29,8 +29,8 @@ int verifierAlphanumerique2(char c);
 
 void convertirAccents(char * texte);
 
-void chiffrer(char * texte, int cle);
+char* chiffrer(char * texte, int cle, char* tabChiffre);
 
-void dechiffrer(char * texte, int cle);
+char* dechiffrer(char * texte, int cle, char* tabDechiffre);
 
 void affichage(char * texte);

@@ -71,9 +71,8 @@ void convertirAccents(char * c){
 
 // Je ne sais pas pourquoi mais rajoute des caractères a la fin
 // Sinon marche bien
-void chiffrer(char * texte, int cle){
+char* chiffrer(char * texte, int cle, char* tabChiffre){
 	char tab[strlen(texte)];
-	char tabChiffre[strlen(texte)];
 	for (int i = 0; i < strlen(texte); i++){
 		if (verifierAlphanumerique(texte[i]) == 0){
 			printf("Erreur de caractères spéciaux\n");
@@ -87,13 +86,12 @@ void chiffrer(char * texte, int cle){
 			tabChiffre[i] = cle + tab[i];
 		}
 	}
-	printf("Après chiffrage : %s\n", tabChiffre);
+	return tabChiffre;
 }
 
 
 // Même chose que pour chiffrer
-void dechiffrer(char * texte, int cle){
-	char tabDechiffre[strlen(texte)];
+char* dechiffrer(char * texte, int cle, char* tabDechiffre){
 	for (int i = 0; i < strlen(texte); i++){
 		if(texte[i] - cle < 97){
 			tabDechiffre[i] = texte[i] - cle + 26;
@@ -101,5 +99,10 @@ void dechiffrer(char * texte, int cle){
 			tabDechiffre[i] = texte[i] - cle;
 		}
 	}
-	printf("Après dechiffrage : %s\n", tabDechiffre);
+	return tabDechiffre;
+}
+
+
+void affichage(char * texte){
+	printf("%s\n", texte);
 }
