@@ -63,7 +63,7 @@ char chiffrer(char lettre, int cle) {
 	if(lettre == 32) {
 		return 32;
 	}
-	char texte = convertirAccents(lettre);
+	char texte = convertirAccents(charToInt(lettre));
 	//minuscule
 	if (texte >= 97 && texte <= 122 ) {
 		if (texte + cle > 122){
