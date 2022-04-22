@@ -30,6 +30,33 @@
 
 void main(){
 
+
+/* test verifier alphaNumérique
+
+	if(verifierAlphanumerique(' ')==1){
+		printf("le caractère espace est ok\n");
+	} else {
+		printf("le caractère espace est KO \n");
+	}
+
+	printf("\n Alphabet Majuscule\n");
+	for(int i=-81; i<-89; i++) {
+		if(verifierAlphanumerique(i)==1){
+			printf("le caractère %c est ok \n", i);
+		} else {
+			printf("le caractère %c est KO \n", i);
+		}
+	}
+	printf("\n Alphabet Minuscule\n");
+	for(int i=97; i<122; i++) {
+		if(verifierAlphanumerique(i)==1){
+			printf("le caractère %c est ok \n", i);
+		} else {
+			printf("le caractère %c est KO \n", i);
+		}
+	}
+	printf("le caractère %c est ok \n", 'à');
+*/
 	char tabChiffre[100];
 	char tabDechiffre[100];
 	int i = 0;
@@ -51,6 +78,6 @@ void main(){
 	for(int y=0; y<100; y++) {
 		tabDechiffre[y] = dechiffrer(tabChiffre[y],2);
 	}
-	affichageChiffre(tabChiffre, tabDechiffre);
+	affichage(tabChiffre, tabDechiffre);
 
 }
