@@ -24,13 +24,22 @@
 *                                                                             *
 ******************************************************************************/
 
+// renvoie 1 si le caractère passé en paramètre est une lettre de l'alphabet
+// en majuscule ou en minuscule, si le caractère est un espace ou bien si la lettre
+// porte un accent sur les lettre a,e,i,o,u
+// sinon renvoie 0.
 int verifierAlphanumerique(char c);
+
 int verifierAlphanumerique2(char c);
 
-void convertirAccents(char * texte);
+// converti un caractère à accent passé en paramètre en un caractère sans accent.
+int convertirAccents(int texte);
 
 char* chiffrer(char * texte, int cle, char* tabChiffre);
 
 char* dechiffrer(char * texte, int cle, char* tabDechiffre);
 
 void affichage(char * texte);
+
+// prend un caractère en paramètre et renvoie son code en décimal.
+int charToInt(char texte);
