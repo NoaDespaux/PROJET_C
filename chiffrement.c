@@ -69,7 +69,7 @@ int verifierAlphanumerique2(char c){
 }
 
 
-int convertirAccents(long texte) {
+int convertirAccents(int texte) {
 	if (texte == -92 || texte == -96 || texte == -95|| texte == -94|| texte == -93|| texte == -91) {
 		return 97 ; //a
 	}
