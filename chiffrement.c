@@ -31,24 +31,33 @@
 
 //Caractères autorisés : A-Z a-z 0-9 ',' '-' '.' '/'
 
-int verifierAlphanumerique(char c){
-	if (c < 32){
-		return 0;
+//Caractères autorisés : A-Z a-z ' ' et les accents sur a,e,i,o,u
+int verifierAlphanumerique(char texte){
+	if (texte == 32){
+		return 1; //espace
 	}
-	if (c >= 33 && c <=43 ){
-		return 0;
+	if (texte >= 65 && texte <= 90 ){
+		return 1; //alphabet majuscule
 	}
-	if (c >= 58 && c <= 64 ){
-		return 0;
+	if (texte >= 97 && texte <= 122 ){
+		return 1; //alphabet minuscule
 	}
-	if (c >= 91 && c <= 96 ){
-		return 0;
+	//accent
+	if (texte >= -68 && texte <= -71 ){
+		return 1;
 	}
-	if (c > 122){
-		return 0;
+	if (texte >= -74 && texte <= -78 ){
+		return 1;
 	}
-	return 1;
+	if (texte >= -81 && texte <= -89 ){
+		return 1;
+	}
+	if (texte >= -91 && texte <= -96 ){
+		return 1;
+	}
+	return 0;
 }
+
 
 
 //pour des tests
@@ -60,12 +69,26 @@ int verifierAlphanumerique2(char c){
 }
 
 
-//ne marche pas encore
-void convertirAccents(char * c){
-	if (*c == -61){
-		printf("samarch\n");
-		*c = 97;
+int convertirAccents(long texte) {
+	if (texte == -92 || texte == -96 || texte == -95|| texte == -94|| texte == -93|| texte == -91) {
+		return 97 ; //a
 	}
+	if (texte == -89) {
+		return 99; //c
+	}
+	if (texte == -87 || texte == -88 || texte == -86 || texte == -85) {
+		return 101; //e
+	}
+	if (texte == -81 || texte == -82 || texte == -83 || texte == -84) {
+		return 105; //i
+	}
+	if (texte == -78 || texte == -77 || texte == -76 || texte == -75 || texte == -74) {
+		return 111; //o
+	}
+	if (texte == -71 || texte == -70 || texte == -69 || texte == -68) {
+		return 117; //u
+	}
+	return 0;
 }
 
 
