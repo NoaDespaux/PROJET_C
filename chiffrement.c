@@ -1,35 +1,7 @@
-/******************************************************************************
-*  ASR => 4R2.04                                                              *
-*******************************************************************************
-*                                                                             *
-*  N° de Sujet : 3                                                            *
-*                                                                             *
-*******************************************************************************
-*                                                                             *
-*  Intitulé :                                                                 *
-*                                                                             *
-*******************************************************************************
-*                                                                             *
-*  Nom-prénom1 : Benaïm-Eliott                                                * 
-*                                                                             *
-*  Nom-prénom2 : Despaux-Noa                                                  *
-*                                                                             *
-*  Nom-prénom3 : Cabaret-Line                                                 *
-*                                                                             *
-*  Nom-prénom4 : Hmadouch-Anass                                               *
-*                                                                             *
-*******************************************************************************
-*                                                                             *
-*  Nom du fichier : chiffrement.c                                             *
-*                                                                             *
-******************************************************************************/
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include "chiffrement.h"
-
-
-//Caractères autorisés : A-Z a-z 0-9 ',' '-' '.' '/'
 
 //Caractères autorisés : A-Z a-z ' ' et les accents sur a,e,i,o,u
 int verifierAlphanumerique(char texte){
@@ -42,7 +14,9 @@ int verifierAlphanumerique(char texte){
 	if (texte >= 97 && texte <= 122 ){
 		return 1; //alphabet minuscule
 	}
-	//accent
+	if (texte =='\n' || texte == 0){
+		return 1; //retour chariot
+	}
 	if (texte >= -68 && texte <= -71 ){
 		return 1;
 	}
@@ -58,18 +32,8 @@ int verifierAlphanumerique(char texte){
 	return 0;
 }
 
-
-
-//pour des tests
-int verifierAlphanumerique2(char c){
-	if (c < 129 || c > 141){
-		return 0;
-	}
-	return 1;
-}
-
-
 int convertirAccents(int texte) {
+	//minuscule
 	if (texte == -92 || texte == -96 || texte == -95|| texte == -94|| texte == -93|| texte == -91) {
 		return 97 ; //a
 	}
@@ -88,47 +52,65 @@ int convertirAccents(int texte) {
 	if (texte == -71 || texte == -70 || texte == -69 || texte == -68) {
 		return 117; //u
 	}
-	return 0;
-}
-
-
-// Je ne sais pas pourquoi mais rajoute des caractères a la fin
-// Sinon marche bien
-char* chiffrer(char * texte, int cle, char* tabChiffre){
-	char tab[strlen(texte)];
-	for (int i = 0; i < strlen(texte); i++){
-		if (verifierAlphanumerique(texte[i]) == 0){
-			printf("Erreur de caractères spéciaux\n");
-			exit(EXIT_FAILURE);
-		}
-		convertirAccents(&texte[i]);
-		tab[i] = texte[i];
-		if (texte[i] + cle > 122){
-			tabChiffre[i] = cle + tab[i] - 26;
-		} else {
-			tabChiffre[i] = cle + tab[i];
-		}
-	}
-	return tabChiffre;
-}
-
-
-// Même chose que pour chiffrer
-char* dechiffrer(char * texte, int cle, char* tabDechiffre){
-	for (int i = 0; i < strlen(texte); i++){
-		if(texte[i] - cle < 97){
-			tabDechiffre[i] = texte[i] - cle + 26;
-		} else {
-			tabDechiffre[i] = texte[i] - cle;
-		}
-	}
-	return tabDechiffre;
+	return texte;
 }
 
 int charToInt(char texte) {
 	return texte;
 }
 
-void affichage(char * texte){
-	printf("%s\n", texte);
+char chiffrer(char lettre, int cle) {
+	if(lettre == 32) {
+		return 32;
+	}
+	char texte = convertirAccents(lettre);
+	//minuscule
+	if (texte >= 97 && texte <= 122 ) {
+		if (texte + cle > 122){
+			return cle + texte - 26;
+		} else {
+			return cle + texte;
+		}
+	}
+	//majuscule
+	if (texte >= 65 && texte <= 90 ){
+		if (texte + cle > 90){
+			return cle + texte - 26;
+		} else {
+			return cle + texte;
+		}
+	}
+	return '\n';	
+}
+
+char dechiffrer(char texte, int cle){
+	//espace
+	if(texte == 32) {
+		return 32;
+	}
+	if(texte == '\n') {
+		return '\n';
+	}
+	//majuscule
+	if(texte - cle < 65){
+		return texte - cle + 26;
+	} 
+	if (texte - cle < 65){
+		return texte - cle + 26;
+	}
+	return texte - cle;
+}
+
+void affichage(char * texteChiffre, char * texteDechiffre){
+    FILE* output_file = fopen("texteChiffre.txt", "w");
+    if (!output_file) {
+        perror("fopen");
+        exit(EXIT_FAILURE);
+    }
+    fwrite(texteChiffre, 1, strlen(texteChiffre), output_file);
+    fwrite(texteDechiffre, 1, strlen(texteDechiffre), output_file);
+
+    printf("Done Writing!\n");
+    fclose(output_file);
+    exit(EXIT_SUCCESS);
 }
