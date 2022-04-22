@@ -25,8 +25,32 @@
 ******************************************************************************/
 #include <stdio.h>
 #include "chiffrement.h"
+#include <string.h>
 
 
 void main(){
+
+	char tabChiffre[100];
+	char tabDechiffre[100];
+	int i = 0;
+
+	FILE* fic;
+	int lectChar = 0;
+
+	fic = fopen("texte.txt", "r");
+	if (fic == NULL) {
+		printf("Erreur à l'ouverture du fichier texte\n");
+	} else {
+		do { 
+			lectChar = fgetc(fic);
+			tabChiffre[i] = chiffrer(lectChar,2) ;
+			i++;
+		} while (feof(fic) == 0); 
+		fclose(fic);
+	}
+	for(int y=0; y<100; y++) {
+		tabDechiffre[y] = dechiffrer(tabChiffre[y],2);
+	}
+	affichageChiffre(tabChiffre, tabDechiffre);
 
 }
