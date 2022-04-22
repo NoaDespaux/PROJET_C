@@ -125,6 +125,9 @@ char* dechiffrer(char * texte, int cle, char* tabDechiffre){
 	return tabDechiffre;
 }
 
+int charToInt(char texte) {
+	return texte;
+}
 
 void affichage(char * texte){
 	printf("%s\n", texte);
