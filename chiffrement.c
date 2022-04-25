@@ -53,10 +53,6 @@ int charToInt(char lettre) {
 }
 
 char chiffrer(char lettre, int cle) {
-	if(verifierAlphanumerique(charToInt(lettre)) == 5) {
-		printf("Erreur: le texte n'est pas chiffrable !\n");
-		exit(EXIT_FAILURE);
-	}
 	if(lettre == 32) {
 		return 32; //espace
 	}
