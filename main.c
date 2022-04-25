@@ -57,8 +57,8 @@ void main(){
 	}
 	printf("le caractère %c est ok \n", 'à');
 */
-	char tabChiffre[100];
-	char tabDechiffre[100];
+	char tabChiffre[1000];
+	char tabDechiffre[1000];
 	int i = 0;
 
 	FILE* fic;
@@ -75,7 +75,7 @@ void main(){
 		} while (feof(fic) == 0); 
 		fclose(fic);
 	}
-	for(int y=0; y<100; y++) {
+	for(int y=0; y<1000; y++) {
 		tabDechiffre[y] = dechiffrer(tabChiffre[y],2);
 	}
 	affichage(tabChiffre, tabDechiffre);
