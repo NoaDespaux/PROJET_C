@@ -23,20 +23,33 @@
 *  Nom du fichier : chiffrement.h                                             *
 *                                                                             *
 ******************************************************************************/
-// renvoie 1 si le caractère passé en paramètre est une lettre de l'alphabet
-// en majuscule ou en minuscule, si le caractère est un espace ou bien si la lettre
-// porte un accent sur les lettre a,e,i,o,u
-// sinon renvoie 0.
+/// Retourne 1 si le caractère lettre passé en paramètre est une lettre 
+// en majuscule ou en minuscule, si le caractère est un espace ou bien un retour chariot
+// Retourne 2 si la lettre comporte un accent sur les lettre a,e,i,o,u
+// sinon retourne 4.
 int verifierAlphanumerique(int lettre);
 
-// converti un caractère à accent passé en paramètre en un caractère sans accent.
+// prend en paramètre le code en entier d'un caractère lettre.
+// Si la lettre est une majuscule, minuscule, un espace ou un retour chariot 
+// alors la fonction retourne le code de la lettre comme son paramètre.
+// Si la lettre comporte un accent sur les lettres minuscules a,e,i,o,u alors
+// la fonction retourne la lettre sans l'accent.
 int convertirAccents(int lettre);
 
+// Prend un caractère lettre en paramètre et un entier cle
+// Retourne un caractère chiffré à l'aide de la méthode Caesar.
 char chiffrer(char lettre, int cle);
 
-char dechiffrer(char texte, int cle);
+// Prend un caractère lettre en paramètre et un entier cle.
+// Retourne le déchiffrement du caractère lettre passé en paramètre avec 
+// l'aide d'une clef cle 
+char dechiffrer(char lettre, int cle);
 
+// Prend deux tableaux de caractères en paramètre. L'un concerne 
+// un texte chiffré et l'autre le texte déchiffré
+// Cette fonction à pour but d'afficher le texte chiffré et déchiffré 
+// dans un nouveau fichier texte
 void affichage(char * texteChiffre, char * texteDechiffre);
 
-// prend un caractère en paramètre et renvoie son code en décimal.
+// prend un caractère lettre en paramètre et renvoie son code en décimal.
 int charToInt(char lettre);
