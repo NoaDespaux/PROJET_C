@@ -4,66 +4,66 @@
 #include "chiffrement.h"
 
 //Caractères autorisés : A-Z a-z ' ' et les accents sur a,e,i,o,u
-int verifierAlphanumerique(char texte){
-	if (texte == 32){
-		return 1; //espace
+int verifierAlphanumerique(int lettre){
+	if (lettre == 32 ||(lettre >= 97 && lettre <= 122) || (lettre >= 65 && lettre <= 90) || lettre == 10){
+		return 1; //espace, maj, minuscule & retour chariot
 	}
-	if (texte >= 65 && texte <= 90 ){
-		return 1; //alphabet majuscule
+	if (lettre == -68 || lettre == -69 || lettre == -70 || lettre == -71){
+		return 2;
 	}
-	if (texte >= 97 && texte <= 122 ){
-		return 1; //alphabet minuscule
+	if (lettre == -74 || lettre == -75 || lettre == -76 || lettre == -77 || lettre == -78){
+		return 2;
 	}
-	if (texte =='\n' || texte == 0){
-		return 1; //retour chariot
+	if (lettre == -81 || lettre == -82 || lettre == -83 || lettre == -84 || lettre == -85 || lettre == -86 || lettre == -87 || lettre == -88 || lettre == -89){
+		return 2;
 	}
-	if (texte >= -68 && texte <= -71 ){
-		return 1;
+	if (lettre == -91 || lettre == -92 || lettre == -93 || lettre == -94 || lettre == -96){
+		return 2;
 	}
-	if (texte >= -74 && texte <= -78 ){
-		return 1;
-	}
-	if (texte >= -81 && texte <= -89 ){
-		return 1;
-	}
-	if (texte >= -91 && texte <= -96 ){
-		return 1;
-	}
-	return 0;
+	return 4;
 }
 
-int convertirAccents(int texte) {
+int convertirAccents(int lettre) {
+	if(verifierAlphanumerique(lettre) == 1) {
+		return lettre;
+	}
 	//minuscule
-	if (texte == -92 || texte == -96 || texte == -95|| texte == -94|| texte == -93|| texte == -91) {
+	if (lettre == -91 || lettre == -92 || lettre == -93 || lettre == -94 || lettre == -96) {
 		return 97 ; //a
 	}
-	if (texte == -89) {
+	if (lettre == -89) {
 		return 99; //c
 	}
-	if (texte == -87 || texte == -88 || texte == -86 || texte == -85) {
+	if (lettre == -85 || lettre == -86 || lettre == -87 || lettre == -88) {
 		return 101; //e
 	}
-	if (texte == -81 || texte == -82 || texte == -83 || texte == -84) {
+	if (lettre == -81 || lettre == -82 || lettre == -83 || lettre == -84) {
 		return 105; //i
 	}
-	if (texte == -78 || texte == -77 || texte == -76 || texte == -75 || texte == -74) {
+	if (lettre == -74 || lettre == -75 || lettre == -76 || lettre == -77 || lettre == -78) {
 		return 111; //o
-	}
-	if (texte == -71 || texte == -70 || texte == -69 || texte == -68) {
+	} 
+	if(lettre == -68 || lettre == -69 || lettre == -70 || lettre == -71) {
 		return 117; //u
 	}
-	return texte;
 }
 
-int charToInt(char texte) {
-	return texte;
+int charToInt(char lettre) {
+	return lettre;
 }
 
 char chiffrer(char lettre, int cle) {
-	if(lettre == 32) {
-		return 32;
+	if(verifierAlphanumerique(charToInt(lettre)) == 5) {
+		printf("Erreur: le texte n'est pas chiffrable !\n");
+		exit(EXIT_FAILURE);
 	}
-	char texte = convertirAccents(charToInt(lettre));
+	if(lettre == 32) {
+		return 32; //espace
+	}
+	if(lettre == 10) {
+		return 10; //espace
+	}
+	int texte = convertirAccents(charToInt(lettre));
 	//minuscule
 	if (texte >= 97 && texte <= 122 ) {
 		if (texte + cle > 122){
@@ -80,25 +80,32 @@ char chiffrer(char lettre, int cle) {
 			return cle + texte;
 		}
 	}
-	return '\n';	
 }
 
-char dechiffrer(char texte, int cle){
+char dechiffrer(char lettre, int cle){
 	//espace
-	if(texte == 32) {
+	if(charToInt(lettre) == 32) {
 		return 32;
 	}
-	if(texte == '\n') {
-		return '\n';
+	if(charToInt(lettre) == 10) {
+		return 10;
 	}
 	//majuscule
-	if(texte - cle < 65){
-		return texte - cle + 26;
-	} 
-	if (texte - cle < 65){
-		return texte - cle + 26;
+	if(charToInt(lettre) >= 65 && charToInt(lettre) <= 90) {
+		if(charToInt(lettre) - cle < 65){
+			return(charToInt(lettre) - cle + 26);
+		} else {
+			return(charToInt(lettre) - cle);
+		}
 	}
-	return texte - cle;
+	//minuscule
+	if(charToInt(lettre) >= 97 && charToInt(lettre) <= 122) {
+		if(charToInt(lettre) - cle < 97){
+			return(charToInt(lettre) - cle + 26);
+		} else {
+			return(charToInt(lettre) - cle);
+		}
+	}
 }
 
 void affichage(char * texteChiffre, char * texteDechiffre){
