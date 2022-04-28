@@ -9,3 +9,4 @@ Dans un second temps nous avons débuté la rédaction du programme.
 Pour cela nous avons réfléchis aux différentes fonctions dont nous aurions besoin.
 Les fonctions générales du sujet sont : chiffrer, dechiffrer, verifier Alphanumérique, ConvertirAccent.
 
+Quant à la rédaction de nos fonctions, nous somme partis de la 
