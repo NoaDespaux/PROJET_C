@@ -25,6 +25,9 @@ Mais quand il est question d'un caractère accentué (sur les lettres minuscules
 
 Suite à cela, il nous faut chiffrer ces caractères, en effet comme dit plus tôt, nous sommes partis du chiffrement césar.
 Le texte chiffré s'obtient en remplaçant chaque lettre du texte original par une lettre à distance fixe (cle de chiffrement), toujours du même côté, dans l'ordre de l'alphabet.
-Nous prenons ainsi un caractère lettre en paramètre ainsi qu'un entier cle, qui nous permettra de retourner de par la méthode césar, le caractère chiffré.
+Nous prenons ainsi un caractère lettre (majuscule et minuscule seulement) en paramètre ainsi qu'un entier cle qui sera additioné au code de chacun des caractères, qui nous permettra de retourner de par la méthode césar, le caractère chiffré.
 
-Quant au déchiffrement de ces caractère, il s'agit là, 
+Quant au déchiffrement de ces caractères, il s'agit là, de retrouver le caractère original à partir de la fonction dechiffrement.
+À l'inverse de la fonction chiffré il s'agit là, de retourner toujours par la même cle de chiffrement, le caractère original.
+Pour cela il nous suffit de soustraire le code de chacun des caractères par cette même cle.
+
