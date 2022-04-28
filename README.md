@@ -19,10 +19,12 @@ Pour notre cas, la fonction retourne 1 si le caractère lettre, passé en param�
 La fonction retourne 2, si le caractère est une lettre accentuée (sur les lettres a, e, i, o, u).
 Sinon la fonction, retourne 4.
 
-La fonction ConvertirAccents, permet de convertir les caractères accentués en caractére sans accent.
-Quant il s'agit d'un caractére lettre sans accents, celui ci retroune la lettre en question (pas de conversion à faire).
-Mais quant il s'agit d'un caractère accentué (sur les lettres miniscules a, e, i, o, u), il s'agit là, de retourner le caractère lettre sans l'accent.
+La fonction ConvertirAccents, permet de convertir les caractères accentués en caractère sans accent.
+Quand il s'agit d'un caractère lettre sans accents, celui-ci retourne la lettre en question (pas de conversion à faire).
+Mais quand il est question d'un caractère accentué (sur les lettres minuscules a, e, i, o, u), il s'agit là, de retourner le caractère lettre sans l'accent.
 
 Suite à cela, il nous faut chiffrer ces caractères, en effet comme dit plus tôt, nous sommes partis du chiffrement césar.
-Le texte chiffré s'obtient en remplaçant chaque lettre du texte original par une lettre à distance fixe (clé), toujours du même côté, dans l'ordre de l'alphabet.
-Nous prenons ainsi un caractère lettre en paramètre ainsi qu'un entier clé, qui nous permettra de retourner de part la méthode césar, le caractère chiffré.
+Le texte chiffré s'obtient en remplaçant chaque lettre du texte original par une lettre à distance fixe (cle de chiffrement), toujours du même côté, dans l'ordre de l'alphabet.
+Nous prenons ainsi un caractère lettre en paramètre ainsi qu'un entier cle, qui nous permettra de retourner de par la méthode césar, le caractère chiffré.
+
+Quant au déchiffrement de ces caractère, il s'agit là, 
