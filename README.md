@@ -2,7 +2,7 @@
 
 Sujet n°3 : Chiffrement de messages
 
-Dans un premier temps nous avons cherché à comprendre le fonctionnement du déchiffremment César.
+Dans un premier temps nous avons cherché à comprendre le fonctionnement du chiffremment César.
 Une fois celui-ci comprit nous avons écrit l'algorithme correspondant.
 
 Dans un second temps nous avons débuté la rédaction du programme. 
@@ -19,4 +19,10 @@ Pour notre cas, la fonction retourne 1 si le caractère lettre, passé en param�
 La fonction retourne 2, si le caractère est une lettre accentuée (sur les lettres a, e, i, o, u).
 Sinon la fonction, retourne 4.
 
-Suite à cela, la fonction ConvertirAccents 
+La fonction ConvertirAccents, permet de convertir les caractères accentués en caractére sans accent.
+Quant il s'agit d'un caractére lettre sans accents, celui ci retroune la lettre en question (pas de conversion à faire).
+Mais quant il s'agit d'un caractère accentué (sur les lettres miniscules a, e, i, o, u), il s'agit là, de retourner le caractère lettre sans l'accent.
+
+Suite à cela, il nous faut chiffrer ces caractères, en effet comme dit plus tôt, nous sommes partis du chiffrement césar.
+Le texte chiffré s'obtient en remplaçant chaque lettre du texte original par une lettre à distance fixe (clé), toujours du même côté, dans l'ordre de l'alphabet.
+Nous prenons ainsi un caractère lettre en paramètre ainsi qu'un entier clé, qui nous permettra de retourner de part la méthode césar, le caractère chiffré.
