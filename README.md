@@ -16,12 +16,12 @@ qui va nous permettre de savoir si les caractères entrés sont des caractères 
 les alphabétiques représentant les lettres (de A à Z dans l'alphabet) minuscules et majuscules, 
 ainsi que les caractères numériques (de 0 à 9).
 Pour notre cas, la fonction retourne 1 si le caractère lettre passé en paramètre est soit une lettre majuscule / minuscule, soit un espace ou encore un retour chariot.
-La fonction retourne 2 si le caractère est une lettre accentuée (sur les lettres a, e, i, o, u).
+La fonction retourne 2 si le caractère est une lettre accentuée (sur les lettres a, e, i, o, u) et retourne 3 lorsque qu'il est question de caractères spéciaux.
 Sinon la fonction, retourne 4.
 
 La fonction ConvertirAccents, permet de convertir les caractères accentués en caractère sans accent.
 Quand il s'agit d'un caractère lettre sans accent, celui-ci retourne la lettre en question (pas de conversion à faire).
-Mais quand il est question d'un caractère accentué (sur les lettres minuscules a, e, i, o, u), il s'agit là de retourner le caractère lettre sans l'accent.
+Mais quand il est question d'un caractère accentué (sur les lettres minuscules a, e, i, o, u), il s'agit là de retourner le caractère lettre sans l'accent. De plus lorsqu'il d'un caractère spécial, un message d'erreur s'affiche avant d'arrêter le programme.
 
 Suite à cela, il nous faut chiffrer ces caractères, en effet comme dit plus tôt, nous sommes partis du chiffrement césar.
 Le texte chiffré s'obtient en remplaçant chaque lettre du texte original par une lettre à distance fixe (clé de chiffrement), toujours du même côté, dans l'ordre de l'alphabet.
@@ -31,3 +31,4 @@ Quant au déchiffrement de ces caractères, il s'agit là de retrouver le caract
 À l'inverse de la fonction chiffrer, il s'agit là de retourner toujours par la même cle de chiffrement, le caractère original.
 Pour cela il nous suffit de soustraire le code de chacun des caractères par cette même cle.
 
+Pour finir, il ne nous reste plus qu'à afficher le texte chiffré et déchiffré dans des fichiers texte distinct. 
