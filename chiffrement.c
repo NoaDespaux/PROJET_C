@@ -20,12 +20,19 @@ int verifierAlphanumerique(int lettre){
 	if (lettre == -91 || lettre == -92 || lettre == -93 || lettre == -94 || lettre == -96){
 		return 2;
 	}
+	if(lettre == 195 || lettre == 255 || lettre == -61 || lettre == -1){
+		return 3; // caractères spéciaux accents
+	}
 	return 4;
 }
 
 int convertirAccents(int lettre) {
 	if(verifierAlphanumerique(lettre) == 1) {
 		return lettre;
+	}
+	if(verifierAlphanumerique(lettre) == 4) {
+		printf("erreur : caractère spécial\n");
+		exit(EXIT_FAILURE);
 	}
 	//minuscule
 	if (lettre == -91 || lettre == -92 || lettre == -93 || lettre == -94 || lettre == -96) {
@@ -115,5 +122,5 @@ void affichage(char * texteChiffre, char * texteDechiffre){
 
     printf("Done Writing!\n");
     fclose(output_file);
-    exit(EXIT_SUCCESS);
+    //exit(EXIT_SUCCESS);
 }
