@@ -111,16 +111,23 @@ char dechiffrer(char lettre, int cle){
 	}
 }
 
-void affichage(char * texteChiffre, char * texteDechiffre){
+void affichagechiffre(char * texteChiffre){
     FILE* output_file = fopen("texteChiffre.txt", "w");
     if (!output_file) {
         perror("fopen");
         exit(EXIT_FAILURE);
     }
     fwrite(texteChiffre, 1, strlen(texteChiffre), output_file);
-    fwrite(texteDechiffre, 1, strlen(texteDechiffre), output_file);
-
-    printf("Done Writing!\n");
     fclose(output_file);
     //exit(EXIT_SUCCESS);
+}
+
+void affichageDechiffre(char * texteDechiffre){
+    FILE* output_file2 = fopen("texteDechiffre.txt", "w");
+    if (!output_file2) {
+        perror("fopen");
+        exit(EXIT_FAILURE);
+    }
+    fwrite(texteDechiffre, 1, strlen(texteDechiffre), output_file2);
+    fclose(output_file2);
 }
