@@ -26,39 +26,11 @@
 #include <stdio.h>
 #include "chiffrement.h"
 #include <string.h>
-
+#define TAILLE_MAX 1000
 
 void main(){
-
-
-/* test verifier alphaNumérique
-
-	if(verifierAlphanumerique(' ')==1){
-		printf("le caractère espace est ok\n");
-	} else {
-		printf("le caractère espace est KO \n");
-	}
-
-	printf("\n Alphabet Majuscule\n");
-	for(int i=-81; i<-89; i++) {
-		if(verifierAlphanumerique(i)==1){
-			printf("le caractère %c est ok \n", i);
-		} else {
-			printf("le caractère %c est KO \n", i);
-		}
-	}
-	printf("\n Alphabet Minuscule\n");
-	for(int i=97; i<122; i++) {
-		if(verifierAlphanumerique(i)==1){
-			printf("le caractère %c est ok \n", i);
-		} else {
-			printf("le caractère %c est KO \n", i);
-		}
-	}
-	printf("le caractère %c est ok \n", 'à');
-*/
-	char tabChiffre[1000];
-	char tabDechiffre[1000];
+	char tabChiffre[TAILLE_MAX];
+	char tabDechiffre[TAILLE_MAX];
 	int i = 0;
 
 	FILE* fic;
@@ -75,9 +47,10 @@ void main(){
 		} while (feof(fic) == 0); 
 		fclose(fic);
 	}
-	for(int y=0; y<1000; y++) {
+	for(int y=0; y<TAILLE_MAX; y++) {
 		tabDechiffre[y] = dechiffrer(tabChiffre[y],2);
 	}
-	affichage(tabChiffre, tabDechiffre);
+	affichagechiffre(tabChiffre);
+	affichageDechiffre(tabDechiffre);
 
 }
