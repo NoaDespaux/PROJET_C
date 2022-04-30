@@ -23,7 +23,7 @@
 *  Nom du fichier : chiffrement.h                                             *
 *                                                                             *
 ******************************************************************************/
-/// Retourne 1 si le caractère lettre passé en paramètre est une lettre 
+// Retourne 1 si le caractère lettre passé en paramètre est une lettre 
 // en majuscule ou en minuscule, si le caractère est un espace ou bien un retour chariot
 // Retourne 2 si la lettre comporte un accent sur les lettre a,e,i,o,u
 // sinon retourne 4.
@@ -45,11 +45,15 @@ char chiffrer(char lettre, int cle);
 // l'aide d'une clef cle 
 char dechiffrer(char lettre, int cle);
 
-// Prend deux tableaux de caractères en paramètre. L'un concerne 
-// un texte chiffré et l'autre le texte déchiffré
-// Cette fonction à pour but d'afficher le texte chiffré et déchiffré 
+// Prend un tableau de caractères chiffré texteChiffre, avec la méthode Caesar, en paramètre.
+// Cette fonction à pour but d'afficher le texte chiffré 
 // dans un nouveau fichier texte
-void affichage(char * texteChiffre, char * texteDechiffre);
+void affichagechiffre(char * texteChiffre);
+
+// Prend un tableau de caractères déchiffré texteDechiffre, avec la méthode Caesar, en paramètre.
+// Cette fonction à pour but d'afficher le texte déchiffré 
+// dans un nouveau fichier texte
+void affichageDechiffre(char * texteDechiffre);
 
 // prend un caractère lettre en paramètre et renvoie son code en décimal.
 int charToInt(char lettre);
