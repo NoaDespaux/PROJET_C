@@ -48,7 +48,7 @@ int verifierAlphanumerique(int lettre){
 	if(lettre == 195 || lettre == 255 || lettre == -61 || lettre == -1){
 		return 3; // caractères spéciaux accents
 	}
-	printf("erreur : caractère spécial\n Les caractères sont autorisés : A-Z a-z ' ' et les accents sur a,e,i,o,u \n");
+	printf("erreur : caractère spécial\nLes caractères sont autorisés : A-Z a-z ' ' et les accents sur a,e,i,o,u \n");
 	exit(EXIT_FAILURE);
 }
 
