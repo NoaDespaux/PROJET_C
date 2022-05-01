@@ -23,16 +23,13 @@ int verifierAlphanumerique(int lettre){
 	if(lettre == 195 || lettre == 255 || lettre == -61 || lettre == -1){
 		return 3; // caractères spéciaux accents
 	}
-	return 4;
+	printf("erreur : caractère spécial\n");
+	exit(EXIT_FAILURE);
 }
 
 int convertirAccents(int lettre) {
 	if(verifierAlphanumerique(lettre) == 1) {
 		return lettre;
-	}
-	if(verifierAlphanumerique(lettre) == 4) {
-		printf("erreur : caractère spécial\n");
-		exit(EXIT_FAILURE);
 	}
 	//minuscule
 	if (lettre == -91 || lettre == -92 || lettre == -93 || lettre == -94 || lettre == -96) {
@@ -55,9 +52,6 @@ int convertirAccents(int lettre) {
 	}
 }
 
-int charToInt(char lettre) {
-	return lettre;
-}
 
 char chiffrer(char lettre, int cle) {
 	if(lettre == 32) {
@@ -66,7 +60,7 @@ char chiffrer(char lettre, int cle) {
 	if(lettre == 10) {
 		return 10; //espace
 	}
-	int texte = convertirAccents(charToInt(lettre));
+	int texte = convertirAccents(lettre);
 	//minuscule
 	if (texte >= 97 && texte <= 122 ) {
 		if (texte + cle > 122){
@@ -87,26 +81,26 @@ char chiffrer(char lettre, int cle) {
 
 char dechiffrer(char lettre, int cle){
 	//espace
-	if(charToInt(lettre) == 32) {
+	if(lettre == 32) {
 		return 32;
 	}
-	if(charToInt(lettre) == 10) {
+	if(lettre == 10) {
 		return 10;
 	}
 	//majuscule
-	if(charToInt(lettre) >= 65 && charToInt(lettre) <= 90) {
-		if(charToInt(lettre) - cle < 65){
-			return(charToInt(lettre) - cle + 26);
+	if(lettre >= 65 && lettre <= 90) {
+		if(lettre - cle < 65){
+			return(lettre - cle + 26);
 		} else {
-			return(charToInt(lettre) - cle);
+			return(lettre - cle);
 		}
 	}
 	//minuscule
-	if(charToInt(lettre) >= 97 && charToInt(lettre) <= 122) {
-		if(charToInt(lettre) - cle < 97){
-			return(charToInt(lettre) - cle + 26);
+	if(lettre >= 97 && lettre <= 122) {
+		if(lettre - cle < 97){
+			return(lettre - cle + 26);
 		} else {
-			return(charToInt(lettre) - cle);
+			return(lettre - cle);
 		}
 	}
 }
