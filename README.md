@@ -11,7 +11,7 @@ Les fonctions générales du sujet sont : chiffrer, déchiffrer, vérifier Alpha
 De plus il a été jugé préférable, dans nos différentes fonctions, de ne pas prendre en compte le texte dans son intrégalité mais que chaque fonction ne vérifie que caractère par caractère.
 Tous les caractères sont identifiés par leurs codes ASCII.
 
-Quant à la rédaction de nos fonctions, nous avons commencé par vérifier Alphanumérique, qui va nous permettre de savoir si les caractères entrés sont des caractères alphanumériques. C'est-à-dire les alphabétiques représentant les lettres (de A à Z dans l'alphabet) minuscules et majuscules, ainsi que les caractères numériques (de 0 à 9).
+Quant à la rédaction de nos fonctions, nous avons commencé par vérifier Alphanumérique, qui va nous permettre de savoir si les caractères entrés sont des caractères alphanumériques. C'est-à-dire les alphabétiques représentant les lettres (de A à Z dans l'alphabet) minuscules et majuscules.
 Pour notre fonction nous avons 4 cas : 
 La fonction retourne 1 si le caractère lettre passé en paramètre est une lettre majuscule / minuscule, un espace ou encore un retour chariot.
 La fonction retourne 2 si le caractère est une lettre accentuée (sur les lettres a, e, i, o, u) 
