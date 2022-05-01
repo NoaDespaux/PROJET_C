@@ -27,6 +27,7 @@
 #include "chiffrement.h"
 #include <string.h>
 #define TAILLE_MAX 1000
+#define CLEF 2
 
 void main(){
 	char tabChiffre[TAILLE_MAX];
@@ -34,19 +35,20 @@ void main(){
 	int i = 0;
 	FILE* fic;
 	int lectChar = 0;
+
 	fic = fopen("texte.txt", "r");
 	if (fic == NULL) {
 		printf("Erreur à l'ouverture du fichier texte\n");
 	} else {
 		do { 
 			lectChar = fgetc(fic);
-			tabChiffre[i] = chiffrer(lectChar,2) ;
+			tabChiffre[i] = chiffrer(lectChar, CLEF) ;
 			i++;
 		} while (feof(fic) == 0); 
 		fclose(fic);
 	}
 	for(int y=0; y<TAILLE_MAX; y++) {
-		tabDechiffre[y] = dechiffrer(tabChiffre[y],2);
+		tabDechiffre[y] = dechiffrer(tabChiffre[y], CLEF);
 	}
 	affichagechiffre(tabChiffre);
 	affichageDechiffre(tabDechiffre);
