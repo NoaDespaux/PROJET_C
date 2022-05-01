@@ -6,7 +6,7 @@ L'objectif de notre application est de pouvoir chiffrer le contenu d'un fichier 
 L'application chiffre et déchiffre les messages dans les fichiers textes respectif : texteChiffre.txt et texteDechiffre.txt .
 
 Les fonctions utilisées sont : verifierAlphanumerique(), convertirAccents(), chiffrer(), dechiffrer(), affichagechiffre(), affichageDechiffre().
-Le texte à chiffré est à écrire dans le fichier texte texte.txt. La taille maximal du message est fixé à 1 000 caractères initialement mais peut-être agrandi ou raccourci en modifiant la constante TAILLE_MAX présente dans main.c .
+Le texte à chiffré est à écrire dans le fichier texte texte.txt. La taille maximal du message est fixé à 1 000 caractères initialement mais peut-être agrandi ou raccourci en modifiant la constante TAILLE_MAX présente dans main.c . De plus, la clef de chiffrement est initialement définie à 2, mais peut-être changé en modifiant la constante CLEF présente dans main.c .
 
 Quant à la rédaction de nos fonctions, nous avons commencé par verifierAlphanumerique(int lettre), qui va nous permettre de savoir si les caractères entrés sont des caractères alphanumériques. C'est-à-dire les alphabétiques représentant les lettres (de A à Z dans l'alphabet) minuscules et majuscules, ainsi que les caractères espace ' ' et retour chariot '\n'. La fonction prend donc en paramètre le code ASCII en integer d'un caractère lettre.
 La fonction retourne 1 si le caractère lettre passé en paramètre est une lettre en majuscule ou en minuscule, si le caractère est un espace ou bien un retour chariot.
