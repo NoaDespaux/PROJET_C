@@ -26,12 +26,12 @@ De plus lorsqu'il s'agit d'un caractère spécial (3), un message d'erreur s'aff
 
 Suite à cela, il nous faut chiffrer la totalité de ces caractères. Comme dit plus tôt, nous sommes partis du chiffrement césar.
 Le texte chiffré s'obtient en remplaçant chaque lettre du texte original par une lettre à distance fixe (clé de chiffrement), toujours du même côté, dans l'ordre de l'alphabet. Par exemple si notre clé vaut 3, la lettre C va être chiffrée par la 3ième lettre après lui dans l'ordre alphabétique, c'est à dire F.
-Nous prenons ainsi en paramètre, un caractère lettre (majuscule et minuscule seulement) ainsi qu'un entier cle qui sera additioné à cahque caractère du code. Ceci nous permettra de retourner de par la méthode césar, le caractère chiffré.
+Nous prenons ainsi en paramètre, un caractère lettre (majuscule et minuscule seulement) ainsi qu'un entier cle qui sera additioné à chaque caractère du code. Ceci nous permettra de retourner de par la méthode césar, le caractère chiffré.
 Pour cela nous allons suivre 3 étapes:
 Dans un premier temps on détermine la nature du caractère.
 Ensuite on utilise notre fonction ConvertirAccents afin d'enlever tous les accentsde notre texte.
 En fin on ajoute notre clé à chaque caractère. Pour cela, on traite si la lettre est en minuscule ou en majuscule puis on fait attention au retour possible. C'est à dire que pour les lettre en fin de liste comme X par exemple, lorsqu'on lui ajoute la clé de valeur 4 nous devons revenir au début de l'alphabet pour le chiffrer en B. 
-Pour ajouter notre clé à un caractère, nous prenons sont code ASCII qui est un entier, et nous y ajoutons la valeur voulue.
+Pour ajouter notre clé à un caractère, nous prenons sont code ASCII qui est un entier et nous y ajoutons la valeur voulue.
 Par exemple le caractère A à comme code ASCII : 65    si nous lui ajoutons la clé de valeur 3 nous abtenons le code ASCII : 68 qui correspond au caractère : D
 
 Quant au déchiffrement de ces caractères, il s'agit là de retrouver les caractères originaux à partir de la fonction dechiffrement.
