@@ -32,10 +32,8 @@ void main(){
 	char tabChiffre[TAILLE_MAX];
 	char tabDechiffre[TAILLE_MAX];
 	int i = 0;
-
 	FILE* fic;
 	int lectChar = 0;
-
 	fic = fopen("texte.txt", "r");
 	if (fic == NULL) {
 		printf("Erreur à l'ouverture du fichier texte\n");
@@ -52,5 +50,4 @@ void main(){
 	}
 	affichagechiffre(tabChiffre);
 	affichageDechiffre(tabDechiffre);
-
 }
