@@ -23,130 +23,35 @@
 *  Nom du fichier : chiffrement.h                                             *
 *                                                                             *
 ******************************************************************************/
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include "chiffrement.h"
+#// Retourne 1 si le caractère lettre passé en paramètre est une lettre 
+// en majuscule ou en minuscule, si le caractère est un espace ou bien un retour chariot
+// Retourne 2 si la lettre comporte un accent sur les lettre a,e,i,o,u
+// Retourne 3 si la caractère lu est un accent d'un caractère spécial
+// sinon lève l'exception EXIT_FAILURE
+int verifierAlphanumerique(int lettre);
 
-//Caractères autorisés : A-Z a-z ' ' et les accents sur a,e,i,o,u
-int verifierAlphanumerique(int lettre){
-	if (lettre == 32 ||(lettre >= 97 && lettre <= 122) || (lettre >= 65 && lettre <= 90) || lettre == 10){
-		return 1; //espace, maj, minuscule & retour chariot
-	}
-	if (lettre == -68 || lettre == -69 || lettre == -70 || lettre == -71){
-		return 2;
-	}
-	if (lettre == -74 || lettre == -75 || lettre == -76 || lettre == -77 || lettre == -78){
-		return 2;
-	}
-	if (lettre == -81 || lettre == -82 || lettre == -83 || lettre == -84 || lettre == -85 || lettre == -86 || lettre == -87 || lettre == -88 || lettre == -89){
-		return 2;
-	}
-	if (lettre == -91 || lettre == -92 || lettre == -93 || lettre == -94 || lettre == -96){
-		return 2;
-	}
-	if(lettre == 195 || lettre == 255 || lettre == -61 || lettre == -1){
-		return 3; // caractères spéciaux accents
-	}
-	printf("erreur : caractère spécial\nLes caractères sont autorisés : A-Z a-z ' ' et les accents sur a,e,i,o,u \n");
-	exit(EXIT_FAILURE);
-}
+// prend en paramètre le code en integer d'un caractère lettre.
+// Si la lettre est une majuscule, minuscule, un espace ou un retour chariot 
+// alors la fonction retourne le code de la lettre comme son paramètre.
+// Si la lettre comporte un accent sur les lettres minuscules a,e,i,o,u alors
+// la fonction retourne la lettre sans l'accent.
+int convertirAccents(int lettre);
 
-int convertirAccents(int lettre) {
-	if(verifierAlphanumerique(lettre) == 1) {
-		return lettre;
-	}
-	//minuscule
-	if (lettre == -91 || lettre == -92 || lettre == -93 || lettre == -94 || lettre == -96) {
-		return 97 ; //a
-	}
-	if (lettre == -89) {
-		return 99; //c
-	}
-	if (lettre == -85 || lettre == -86 || lettre == -87 || lettre == -88) {
-		return 101; //e
-	}
-	if (lettre == -81 || lettre == -82 || lettre == -83 || lettre == -84) {
-		return 105; //i
-	}
-	if (lettre == -74 || lettre == -75 || lettre == -76 || lettre == -77 || lettre == -78) {
-		return 111; //o
-	} 
-	if(lettre == -68 || lettre == -69 || lettre == -70 || lettre == -71) {
-		return 117; //u
-	}
-}
+// Prend un caractère lettre en paramètre et un entier cle
+// Retourne un caractère chiffré à l'aide de la méthode Caesar.
+char chiffrer(char lettre, int cle);
 
+// Prend un caractère lettre en paramètre et un entier cle.
+// Retourne le déchiffrement du caractère lettre passé en paramètre avec 
+// l'aide d'une clef cle en utilisant la méthode Caesar pour le déchiffrement.
+char dechiffrer(char lettre, int cle);
 
-char chiffrer(char lettre, int cle) {
-	if(lettre == 32) {
-		return 32; //espace
-	}
-	if(lettre == 10) {
-		return 10; //espace
-	}
-	int texte = convertirAccents(lettre);
-	//minuscule
-	if (texte >= 97 && texte <= 122 ) {
-		if (texte + cle > 122){
-			return cle + texte - 26;
-		} else {
-			return cle + texte;
-		}
-	}
-	//majuscule
-	if (texte >= 65 && texte <= 90 ){
-		if (texte + cle > 90){
-			return cle + texte - 26;
-		} else {
-			return cle + texte;
-		}
-	}
-}
+// Prend un tableau de caractères chiffré (texteChiffre) avec la méthode Caesar en paramètre.
+// Cette fonction à pour but d'afficher le texte chiffré 
+// dans un nouveau fichier texte nommé texteChiffre.txt
+void affichagechiffre(char * texteChiffre);
 
-char dechiffrer(char lettre, int cle){
-	//espace
-	if(lettre == 32) {
-		return 32;
-	}
-	if(lettre == 10) {
-		return 10;
-	}
-	//majuscule
-	if(lettre >= 65 && lettre <= 90) {
-		if(lettre - cle < 65){
-			return(lettre - cle + 26);
-		} else {
-			return(lettre - cle);
-		}
-	}
-	//minuscule
-	if(lettre >= 97 && lettre <= 122) {
-		if(lettre - cle < 97){
-			return(lettre - cle + 26);
-		} else {
-			return(lettre - cle);
-		}
-	}
-}
-
-void affichagechiffre(char * texteChiffre){
-    FILE* output_file = fopen("texteChiffre.txt", "w");
-    if (!output_file) {
-        perror("fopen");
-        exit(EXIT_FAILURE);
-    }
-    fwrite(texteChiffre, 1, strlen(texteChiffre), output_file);
-    fclose(output_file);
-    //exit(EXIT_SUCCESS);
-}
-
-void affichageDechiffre(char * texteDechiffre){
-    FILE* output_file2 = fopen("texteDechiffre.txt", "w");
-    if (!output_file2) {
-        perror("fopen");
-        exit(EXIT_FAILURE);
-    }
-    fwrite(texteDechiffre, 1, strlen(texteDechiffre), output_file2);
-    fclose(output_file2);
-}
+// Prend un tableau de caractères déchiffré (texteDechiffre) avec la méthode Caesar en paramètre.
+// Cette fonction à pour but d'afficher le texte déchiffré 
+// dans un nouveau fichier texte nommé texteDechiffre.txt
+void affichageDechiffre(char * texteDechiffre);
