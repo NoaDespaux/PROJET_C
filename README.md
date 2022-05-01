@@ -2,6 +2,8 @@
 
 Sujet n°3 : Chiffrement de messages
 
+L'application fut développé par: Anass HMADOUCH, Line CABARET, Noa DESPAUX et Eliott BENAIM
+
 L'objectif de notre application est de pouvoir chiffrer le contenu d'un fichier texte avec la méthode Caesar. De plus notre application doit-être capable de déchiffré un fichier texte chiffré à l'aide de la méthode Caesar en lui mettant en paramètre la clef de chiffrement.
 L'application chiffre et déchiffre les messages dans les fichiers textes respectif : texteChiffre.txt et texteDechiffre.txt .
 
